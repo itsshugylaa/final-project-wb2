@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // BACKEND INTEGRATION (FINAL)
 
-const API_URL = "http://localhost:5050/api";
+const API_URL = "https://travel-backend-ndpg.onrender.com";
 
 // Login to backend
 async function backendLogin() {
@@ -157,7 +157,7 @@ async function backendCreateBooking() {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-  const API = "http://localhost:5050/api";
+  const API_URL = "https://travel-backend-ndpg.onrender.com";
 
   const loginForm = document.getElementById("loginForm");
   const registerForm = document.getElementById("registerForm");
