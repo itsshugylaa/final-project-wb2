@@ -112,56 +112,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-// BACKEND INTEGRATION (FINAL)
+// FINAL AUTH + BACKEND INTEGRATION
 
 const API = "https://travel-backend-ndpg.onrender.com";
 
-// Login to backend
-async function backendLogin() {
-  const res = await fetch(`${API_URL}/auth/login`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      email: "test@test.com",
-      password: "123456"
-    })
-  });
-
-  const data = await res.json();
-  localStorage.setItem("token", data.token);
-  console.log("Backend login success");
-}
-
-// Create booking via backend
-async function backendCreateBooking() {
-  const token = localStorage.getItem("token");
-
-  const res = await fetch(`${API_URL}/bookings`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
-    },
-    body: JSON.stringify({
-      service: "Beach Tour",
-      destination: "Maldives",
-      date: "2026-03-10"
-    })
-  });
-
-  const data = await res.json();
-  console.log("Booking created:", data);
-}
-
-
 document.addEventListener("DOMContentLoaded", () => {
-  const API = "https://travel-backend-ndpg.onrender.com";
-
   const loginForm = document.getElementById("loginForm");
   const registerForm = document.getElementById("registerForm");
   const msg = document.getElementById("authMsg");
+
+  const auth = document.getElementById("authWrapper");
+  const site = document.getElementById("siteContent");
+
+  
+  const token = localStorage.getItem("token");
+  if (token) {
+    unlock();
+  } else {
+    lock();
+  }
 
   
   document.getElementById("goRegister").onclick = (e) => {
@@ -171,6 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
     msg.innerText = "";
   };
 
+  
   document.getElementById("goLogin").onclick = (e) => {
     e.preventDefault();
     registerForm.style.display = "none";
@@ -178,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
     msg.innerText = "";
   };
 
-  // LOGIN SUBMIT
+  
   loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -197,22 +167,21 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem("token", data.token);
       unlock();
     } else {
-      msg.innerText = "Invalid login";
+      msg.innerText = "Invalid login credentials";
     }
   });
 
-  // REGISTER SUBMIT
+
   registerForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const name = regName.value;
     const email = regEmail.value;
     const password = regPassword.value;
 
-    const res = await fetch(`${API}/auth/register`, {
+    const res = await fetch(`${API}/api/auth/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, password })
+      body: JSON.stringify({ email, password })
     });
 
     const data = await res.json();
@@ -225,25 +194,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+ 
   function unlock() {
-    document.getElementById("authWrapper").style.display = "none";
-    document.getElementById("siteContent").style.pointerEvents = "auto";
-    document.getElementById("siteContent").style.filter = "none";
-  }
-});
-document.addEventListener("DOMContentLoaded", () => {
-  const token = localStorage.getItem("token");
-
-  const auth = document.getElementById("authWrapper");
-  const site = document.getElementById("siteContent");
-
-  if (token) {
-    
     auth.style.display = "none";
     site.style.pointerEvents = "auto";
     site.style.filter = "none";
-  } else {
+  }
 
+ 
+  function lock() {
     auth.style.display = "flex";
     site.style.pointerEvents = "none";
     site.style.filter = "blur(3px)";
