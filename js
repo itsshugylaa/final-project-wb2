@@ -154,3 +154,98 @@ async function backendCreateBooking() {
   const data = await res.json();
   console.log("Booking created:", data);
 }
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const API = "http://localhost:5050/api";
+
+  const loginForm = document.getElementById("loginForm");
+  const registerForm = document.getElementById("registerForm");
+  const msg = document.getElementById("authMsg");
+
+  
+  document.getElementById("goRegister").onclick = (e) => {
+    e.preventDefault();
+    loginForm.style.display = "none";
+    registerForm.style.display = "block";
+    msg.innerText = "";
+  };
+
+  document.getElementById("goLogin").onclick = (e) => {
+    e.preventDefault();
+    registerForm.style.display = "none";
+    loginForm.style.display = "block";
+    msg.innerText = "";
+  };
+
+  // LOGIN SUBMIT
+  loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = loginEmail.value;
+    const password = loginPassword.value;
+
+    const res = await fetch(`${API}/auth/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password })
+    });
+
+    const data = await res.json();
+
+    if (data.token) {
+      localStorage.setItem("token", data.token);
+      unlock();
+    } else {
+      msg.innerText = "Invalid login";
+    }
+  });
+
+  // REGISTER SUBMIT
+  registerForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const name = regName.value;
+    const email = regEmail.value;
+    const password = regPassword.value;
+
+    const res = await fetch(`${API}/auth/register`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, password })
+    });
+
+    const data = await res.json();
+
+    if (data.token) {
+      localStorage.setItem("token", data.token);
+      unlock();
+    } else {
+      msg.innerText = "Registration failed";
+    }
+  });
+
+  function unlock() {
+    document.getElementById("authWrapper").style.display = "none";
+    document.getElementById("siteContent").style.pointerEvents = "auto";
+    document.getElementById("siteContent").style.filter = "none";
+  }
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const token = localStorage.getItem("token");
+
+  const auth = document.getElementById("authWrapper");
+  const site = document.getElementById("siteContent");
+
+  if (token) {
+    
+    auth.style.display = "none";
+    site.style.pointerEvents = "auto";
+    site.style.filter = "none";
+  } else {
+
+    auth.style.display = "flex";
+    site.style.pointerEvents = "none";
+    site.style.filter = "blur(3px)";
+  }
+});

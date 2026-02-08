@@ -1,0 +1,51 @@
+{
+  "info": {
+    "_postman_id": "1328b9ca-e5b6-44f3-ad00-ea5753e9c3b9",
+    "name": "final_project",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "50911227",
+    "_collection_link": "https://go.postman.co/collection/50911227-1328b9ca-e5b6-44f3-ad00-ea5753e9c3b9?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "REGISTER",
+      "request": {
+        "method": "POST",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "LOGIN",
+      "request": {
+        "method": "POST",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "CREATE BOOKING",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "GET BOOKINGS",
+      "request": {
+        "method": "POST",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "DELETE",
+      "request": {
+        "method": "DELETE",
+        "header": []
+      },
+      "response": []
+    }
+  ]
+}

@@ -199,3 +199,77 @@ body.dark-mode pre {
   color: #ddd;
   background-color: #222;
 }
+
+
+
+/* ===== AUTH LAYOUT ===== */
+
+#authWrapper {
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(4px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+#authCard {
+  background: white;
+  padding: 32px;
+  width: 340px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+#authCard h2 {
+  margin-bottom: 8px;
+}
+
+#authCard input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+#authCard button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background: #111;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#authCard button.secondary {
+  background: #f2f2f2;
+  color: #111;
+}
+
+#authMsg {
+  margin-top: 10px;
+  color: red;
+  font-size: 14px;
+}
+
+
+#siteContent {
+  pointer-events: none;
+  filter: blur(2px);
+}
+
+#authCard,
+#authCard * {
+  pointer-events: auto;   
+}
+
+.link {
+  color: #007aff;
+  cursor: pointer;
+  text-decoration: underline;
+}
