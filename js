@@ -1,0 +1,156 @@
+// Contact Form - LocalStorage
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('contactForm');
+  if (!form) return; 
+  const feedback = document.createElement('div'); 
+  feedback.style.color = 'green';
+  feedback.style.marginTop = '10px';
+  form.appendChild(feedback);
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
+
+    
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!name || !email || !message) return;
+    if (!emailPattern.test(email)) {
+      feedback.style.color = 'red';
+      feedback.textContent = 'Please enter a valid email.';
+      return;
+    }
+
+    
+    const contacts = JSON.parse(localStorage.getItem('contacts') || '[]');
+    contacts.push({ name, email, message, date: new Date().toLocaleString() });
+    localStorage.setItem('contacts', JSON.stringify(contacts));
+
+    form.reset(); 
+    feedback.style.color = 'green';
+    feedback.textContent = 'Thank you! We will contact you soon';
+  });
+});
+
+
+
+// Details
+function initPortfolioModal() {
+  $('.open-details').on('click', function() {
+    const title = $(this).data('title');
+    const img = $(this).data('img');
+    const desc = $(this).data('desc');
+
+    
+    $('#modalTitle').text(title);
+    $('#modalImg').attr('src', img);
+    $('#modalDesc pre').text(desc);
+
+    
+    const modalEl = document.getElementById('detailsModal');
+    const existingModal = bootstrap.Modal.getInstance(modalEl);
+    if (existingModal) existingModal.hide();
+
+    const modal = new bootstrap.Modal(modalEl, { backdrop: true });
+    modal.show();
+
+    
+    modalEl.addEventListener('hidden.bs.modal', function () {
+      $('body').removeClass('modal-open');
+      $('.modal-backdrop').remove();
+    });
+  });
+}
+
+$(document).ready(function() {
+  initPortfolioModal();
+});
+
+
+// Effects
+function initEffects() {
+  $('.hero-title').hide().fadeIn(1000);
+  $('.feature').hover(
+    function() { $(this).addClass('shadow-lg'); },
+    function() { $(this).removeClass('shadow-lg'); }
+  );
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  if (typeof initForm === "function") {
+  initForm();
+}
+  initPortfolioModal();
+  initEffects();
+});
+
+
+//  DARK/LIGHT MODE 
+(function() {
+  const toggleBtn = document.getElementById('themeToggle');
+
+  
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    toggleBtn.textContent = ' Light';
+  } else {
+    toggleBtn.textContent = ' Dark';
+  }
+
+  
+  toggleBtn.addEventListener('click', function() {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    toggleBtn.textContent = isDark ? ' Light' : ' Dark';
+  });
+})();
+
+
+
+
+// BACKEND INTEGRATION (FINAL)
+
+const API_URL = "http://localhost:5050/api";
+
+// Login to backend
+async function backendLogin() {
+  const res = await fetch(`${API_URL}/auth/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      email: "test@test.com",
+      password: "123456"
+    })
+  });
+
+  const data = await res.json();
+  localStorage.setItem("token", data.token);
+  console.log("Backend login success");
+}
+
+// Create booking via backend
+async function backendCreateBooking() {
+  const token = localStorage.getItem("token");
+
+  const res = await fetch(`${API_URL}/bookings`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
+    },
+    body: JSON.stringify({
+      service: "Beach Tour",
+      destination: "Maldives",
+      date: "2026-03-10"
+    })
+  });
+
+  const data = await res.json();
+  console.log("Booking created:", data);
+}

@@ -1,0 +1,203 @@
+/* === Base === */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  background-color: #fff;
+  color: #222;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* === Navbar === */
+.navbar { box-shadow: 0 3px 10px rgba(0,0,0,0.05); }
+.brand-name { font-weight: 800; font-size: 1.5rem; }
+.navbar-nav .nav-link { font-weight: 500; transition: color 0.3s; }
+.navbar-nav .nav-link:hover, .navbar-nav .nav-link.active { color: #007bff; }
+
+/* === Hero === */
+.hero {
+  background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), 
+              url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
+  background-size: cover;
+  background-position: center;
+  height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.hero-title {
+  color: #fff;
+  font-size: 3rem;
+  font-weight: 800;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+/* === Features === */
+.feature {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.feature:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+}
+
+/* === Projects === */
+.project-card {
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.project-card img { height: 200px; object-fit: cover; border-radius: 12px 12px 0 0; }
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+/* === Buttons === */
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+.btn-primary:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* === Footer === */
+footer {
+  margin-top: auto;
+  border-top: 1px solid #eee;
+  background-color: #f8f9fa;
+  padding: 20px 0;
+  text-align: center;
+  font-weight: 500;
+  color: #555;
+}
+
+/* === Forms === */
+form input, form textarea {
+  border-radius: 8px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+form input:focus, form textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 4px 12px rgba(0,123,255,0.25);
+  outline: none;
+}
+
+/* === Carousel === */
+#packagesCarousel .carousel-item img {
+  height: 420px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 12px;
+  transition: transform 0.2ss;
+}
+#packagesCarousel .carousel-item img:hover { transform: scale(1.05); }
+
+
+
+/* === Details === */
+.project-card {
+  background-color: #fff;
+  border: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  border-radius: 12px;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+#detailsModal img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+ 
+
+
+/* === DARK MODE === */
+body.dark-mode {
+  background-color: #121212;
+  color: #eaeaea;
+}
+
+body.dark-mode .navbar {
+  background-color: #1f1f1f !important;
+}
+
+body.dark-mode .navbar .nav-link {
+  color: #eaeaea !important;
+}
+
+body.dark-mode .navbar .nav-link.active {
+  color: #66b2ff !important;
+}
+
+body.dark-mode footer {
+  background-color: #1f1f1f;
+  color: #ccc;
+  border-top: 1px solid #333;
+}
+
+body.dark-mode .feature,
+body.dark-mode .project-card,
+body.dark-mode .card,
+body.dark-mode .p-4.border.rounded,
+body.dark-mode .accordion-item,
+body.dark-mode form {
+  background-color: #1f1f1f !important;
+  color: #eaeaea;
+  border-color: #333 !important;
+  box-shadow: none;
+}
+
+body.dark-mode .btn-primary {
+  background-color: #3399ff;
+  border-color: #3399ff;
+}
+
+body.dark-mode .btn-primary:hover {
+  background-color: #007bff;
+}
+
+body.dark-mode .btn-outline-secondary {
+  color: #ccc;
+  border-color: #777;
+}
+
+body.dark-mode .btn-outline-secondary:hover {
+  background-color: #ccc;
+  color: #121212;
+}
+
+body.dark-mode .bg-light {
+  background-color: #222 !important;
+  color: #ddd !important;
+}
+
+body.dark-mode .border {
+  border-color: #333 !important;
+}
+
+body.dark-mode pre {
+  color: #ddd;
+  background-color: #222;
+}
+
+

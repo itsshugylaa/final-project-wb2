@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Final Project</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="https://www.luxtravelsmart.com/wp-content/uploads/2025/02/Untitled-design.png" alt="logo" width="42" height="42" class="me-2 rounded-circle">
+        <span class="brand-name">Lux Travel</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <button id="themeToggle" class="btn btn-outline-secondary ms-3">🌙 Dark</button>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  
+  <header class="hero d-flex align-items-center text-white">
+    <div class="container text-center">
+      <h1 class="display-4 fw-bold hero-title">Explore the World with LuxTravel</h1>
+      <p class="lead">Your luxury journey begins here.</p>
+      <a href="services.html" class="btn btn-light btn-lg me-2">Our Services</a>
+      <a href="portfolio.html" class="btn btn-outline-light btn-lg">View Packages</a>
+    </div>
+  </header>
+
+  <!-- FEATURES -->
+  <main class="container my-5">
+    <section class="row text-center g-4">
+      <div class="col-md-4">
+        <div class="p-4 border rounded feature h-100">
+          <h5>Personalized Itineraries</h5>
+          <p>Trips tailored to your tastes and schedule.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-4 border rounded feature h-100">
+          <h5>Premium Accommodation</h5>
+          <p>Selected luxury hotels and villas for utmost comfort.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-4 border rounded feature h-100">
+          <h5>Exclusive Experiences</h5>
+          <p>Private tours, gastronomic experiences and VIP access.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Carousel -->
+    <section class="my-5">
+      <h3>Popular Packages</h3>
+      <div id="packagesCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="img/maldives.jpg" class="d-block w-100 rounded" alt="Trip 1">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Maldives Getaway — 7 days </h5>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="img/paris.jpg" class="d-block w-100 rounded" alt="Trip 2">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Romantic Paris — 5 days </h5>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="img/bali.jpg" class="d-block w-100 rounded" alt="Trip 3">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Bali Adventure — 8 days </h5>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#packagesCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#packagesCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+      </div>
+    </section>
+
+    <section class="text-center my-5">
+      <p class="mb-3">Ready to plan your dream trip?</p>
+      <a href="contact.html" class="btn btn-primary btn-lg">Contact Us</a>
+    </section>
+  </main>
+
+  
+
+  <footer class="bg-light py-4 mt-auto">
+      <div class="container text-center">© 2025 LuxTravel — All rights reserved.</div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js"></script>
+</body>
+</html>
